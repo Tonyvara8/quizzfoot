@@ -1,0 +1,328 @@
+
+:root {
+    --pitch-green: #2ecc71;
+    --dark-green: #27ae60;
+    --grass-dark: #0f3e27;
+    --line-white: #f0f2f5;
+    --night-black: #1e272e;
+    --gold: #f1c40f;
+    --danger: #e74c3c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle, var(--dark-green), var(--grass-dark));
+    color: var(--night-black);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+}
+
+h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+
+.container { width: 100%; max-width: 900px; padding: 0 20px; z-index: 2; position: relative; }
+.hidden { display: none !important; }
+
+.main-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    border-bottom: 5px solid var(--pitch-green);
+}
+
+.card-header i.gold-icon { color: var(--gold); margin-bottom: 15px; text-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.card-header h1 { font-size: 2.5rem; margin-bottom: 5px; }
+.card-header p { color: #7f8c8d; margin-bottom: 30px; }
+
+.input-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #bdc3c7;
+}
+input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 2px solid #ecf0f1;
+    border-radius: 50px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+input:focus { border-color: var(--pitch-green); }
+
+button {
+    width: 33%;
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-transform: uppercase;
+}
+button:active { transform: scale(0.98); }
+
+.btn-primary {     width: 72%;background: var(--pitch-green); color: white; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4); }
+.btn-primary:hover { background: var(--dark-green); }
+
+.btn-danger { background: var(--danger); color: white; width: auto; padding: 8px 20px; font-size: 1rem; }
+.btn-success { background: var(--night-black); color: var(--pitch-green); }
+
+.scoreboard {
+    background: var(--night-black);
+    color: gold;
+    padding: 15px 25px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    margin-bottom: 30px;
+    border: 2px solid rgba(255,255,255,0.1);
+}
+.user-profile {  font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+header { font-weight: bold; letter-spacing: 2px; }
+
+.admin-panel {
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--gold);
+}
+.admin-grid { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+.admin-grid input { flex: 1; }
+.admin-grid button { flex: 0 0 100px; }
+
+.section-title { color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); margin-bottom: 20px; border-bottom: 2px dashed rgba(255,255,255,0.3); padding-bottom: 10px; display: inline-block; }
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive Grid */
+    gap: 20px;
+}
+
+.quiz-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    transition: transform 0.3s;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.quiz-card:hover { transform: translateY(-5px); }
+.quiz-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 5px;
+    background: linear-gradient(90deg, var(--pitch-green), var(--gold));
+}
+
+.question-text { font-weight: 600; font-size: 1.1rem; margin-bottom: 15px; display: flex; gap: 10px; }
+.question-text i { color: var(--pitch-green); margin-top: 3px; }
+
+summary { list-style: none; cursor: pointer; font-family: 'Oswald'; color: var(--night-black); background: #f1f2f6; padding: 10px; border-radius: 8px; text-align: center; transition: 0.2s; }
+summary:hover { background: #e1e2e6; }
+summary::after { content: ' ▼'; font-size: 0.8em; }
+details[open] summary::after { content: ' ▲'; }
+
+.answer-box {
+    background: var(--night-black);
+    color: var(--pitch-green);
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Oswald';
+    font-size: 1.2rem;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 15px; right: 15px;
+    color: #ccc;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.delete-icon:hover { color: var(--danger); }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (min-width: 600px) {
+    .app-title { display: block; }
+}
+
+.quiz-input-group {
+    display: flex;         
+    width: 100%;           
+    gap: 10px;             
+    margin-top: 15px;
+}
+
+.quiz-input {
+    flex-grow: 1;          
+    width: 100%;           
+    min-width: 0;         
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.quiz-input:focus {
+    border-color: var(--pitch-green);
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.3);
+}
+
+.check-btn {
+    flex-shrink: 0;        
+    width: auto;           
+    background: var(--night-black);
+    color: white;
+    border: none;
+    padding: 0 25px;       
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+.check-btn:hover {
+    background: var(--gold);
+    color: var(--night-black);
+    transform: translateY(-2px);
+}
+
+
+.feedback-msg {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 0.3s;
+}
+
+.feedback-correct {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.feedback-wrong {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.correct-answer-text {
+    display: block;
+    font-size: 0.9em;
+    margin-top: 5px;
+    color: #555;
+    font-weight: normal;
+}
+.admin-controls-icons {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+}
+.edit-icon { color: #ccc; cursor: pointer; transition: 0.2s; }
+.edit-icon:hover { color: var(--gold); } 
+/* --- VERSION MOBILE (Écrans de moins de 768px) --- */
+@media (max-width: 768px) {
+
+    /* 1. On donne plus d'espace au corps de page */
+    body {
+        padding: 10px;
+        align-items: center; /* Centre tout verticalement */
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+    .game-input{
+        width: 100% !important;
+    }
+
+    /* 2. LA CARTE QUESTION */
+    .carousel-area {
+        position: relative; /* Nécessaire pour bouger les flèches */
+        margin-top: 10px;
+    }
+
+    .active-card {
+        padding: 20px 15px; /* Moins de marge intérieure */
+        min-height: auto; /* Hauteur automatique */
+        width: 100%; /* Prend toute la largeur disponible */
+    }
+
+    /* 3. LES FLÈCHES DE NAVIGATION */
+    /* On les sort des côtés pour les mettre en dessous de la carte */
+    .nav-btn {
+        position: absolute;
+        bottom: -70px; /* On les descend sous la carte */
+        z-index: 10;
+        background: rgba(30, 39, 46, 0.8); /* Un peu transparent */
+    }
+    
+    /* On place le bouton gauche à gauche */
+    .nav-btn:first-child { 
+        left: 20px; 
+    }
+    
+    /* On place le bouton droit à droite */
+    .nav-btn:last-child { 
+        right: 20px; 
+    }
+
+    /* 4. LA ZONE DE JEU (Input + Shoot) */
+    /* On empile l'input et le bouton l'un sur l'autre */
+    .input-action {
+        flex-direction: column; /* Colonne au lieu de ligne */
+        gap: 10px;
+    }
+
+    .game-input {
+        width: 100%; /* Prend toute la largeur */
+        font-size: 1.1rem; /* Texte plus gros pour les doigts */
+    }
+
+    .shoot-btn {
+        width: 100%; /* Gros bouton facile à cliquer */
+        padding: 15px;
+    }
+
+    /* 5. TEXTES */
+    .card-header h1 {
+        font-size: 2rem; /* Titre plus petit */
+    }
+
+    .question-text {
+        font-size: 1.3rem; /* Question lisible */
+    }
+}
