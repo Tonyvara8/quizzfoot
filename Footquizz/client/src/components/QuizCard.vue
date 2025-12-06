@@ -3,10 +3,10 @@ import { ref } from 'vue';
 import axios from 'axios';
 
 const props = defineProps(['quiz', 'isAdmin']);
-const emit = defineEmits(['refresh']); // Pour dire de recharger la liste
+const emit = defineEmits(['refresh']); 
 
 const userAnswer = ref('');
-const status = ref(null); // null, 'correct', 'wrong'
+const status = ref(null); 
 
 const verify = () => {
     

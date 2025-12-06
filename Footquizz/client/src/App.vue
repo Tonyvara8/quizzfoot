@@ -5,13 +5,13 @@
       
       <div class="sidebar-header">
         
-        <h3 class="user-name">{{ isConnected ? pseudo : 'Visiteur' }}</h3>
+        <h3 class="user-name">{{ isConnected ? pseudo : 'VISITOR' }}</h3>
         <span v-if="isConnected" class="user-role">{{ role }}</span>
       </div>
 
       <nav class="sidebar-menu">
         <button @click="changeView('home')" :class="{ active: currentView === 'home' }">
-          <i class="fas fa-home"></i> <span>Accueil</span>
+          <i class="fas fa-home"></i> <span>Home</span>
         </button>
 
         <template v-if="isConnected">
@@ -20,7 +20,7 @@
             </button>
 
             <button @click="changeView('ranking')" :class="{ active: currentView === 'ranking' }">
-              <i class="fas fa-chart-line"></i> <span>Classement</span>
+              <i class="fas fa-chart-line"></i> <span>Ranking</span>
             </button>
         </template>
       </nav>
@@ -28,7 +28,7 @@
       <div class="user-info" v-if="isConnected">
         <div class="logout-container" @click="logout">
             <i class="fas fa-sign-out-alt logout-icon"></i>
-            <span class="logout-text">Déconnexion</span>
+            <span class="logout-text">Sign out</span>
         </div>
       </div>
     </aside>

@@ -106,7 +106,7 @@ export default {
     },
 
     CreateA() {
-      console.log("Click reçu ! Changement de mode."); // Pour vérifier dans la console (F12)
+      console.log("Click reçu ! Changement de mode."); 
       this.HaveAccount = !this.HaveAccount;
     },
 
@@ -125,7 +125,6 @@ export default {
 </script>
 
 <style scoped>
-/* On ajoute un peu de style spécifique ici pour forcer le lien à être cliquable */
 .toggle-container {
   margin-top: 20px;
   color: #7f8c8d;
@@ -133,16 +132,15 @@ export default {
 }
 
 .toggle-link {
-  color: #2ecc71; /* Vert pitch */
+  color: #2ecc71;
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
   
-  /* C'est ça qui force le lien à passer au-dessus des autres éléments invisibles */
   position: relative;
   z-index: 100; 
-  display: inline-block; /* Rend la zone de clic plus solide */
-  padding: 5px; /* Agrandi la zone de clic */
+  display: inline-block; 
+  padding: 5px; 
 }
 
 .toggle-link:hover {

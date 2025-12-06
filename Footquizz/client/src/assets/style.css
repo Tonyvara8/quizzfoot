@@ -113,7 +113,7 @@ header { font-weight: bold; letter-spacing: 2px; }
 
 .grid-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive Grid */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
     gap: 20px;
 }
 
@@ -134,7 +134,7 @@ header { font-weight: bold; letter-spacing: 2px; }
     background: linear-gradient(90deg, var(--pitch-green), var(--gold));
 }
 
-.question-text { font-weight: 600; font-size: 1.1rem; margin-bottom: 15px; display: flex; gap: 10px; }
+.question-text { font-weight: 600; font-size: 1.1rem; margin-bottom: 15px; display: flex; gap: 10px;justify-content: center; padding : 15px 0; }
 .question-text i { color: var(--pitch-green); margin-top: 3px; }
 
 summary { list-style: none; cursor: pointer; font-family: 'Oswald'; color: var(--night-black); background: #f1f2f6; padding: 10px; border-radius: 8px; text-align: center; transition: 0.2s; }
@@ -253,13 +253,11 @@ details[open] summary::after { content: ' ▲'; }
 }
 .edit-icon { color: #ccc; cursor: pointer; transition: 0.2s; }
 .edit-icon:hover { color: var(--gold); } 
-/* --- VERSION MOBILE (Écrans de moins de 768px) --- */
 @media (max-width: 768px) {
 
-    /* 1. On donne plus d'espace au corps de page */
     body {
         padding: 10px;
-        align-items: center; /* Centre tout verticalement */
+        align-items: center; 
     }
 
     .container {
@@ -269,60 +267,55 @@ details[open] summary::after { content: ' ▲'; }
         width: 100% !important;
     }
 
-    /* 2. LA CARTE QUESTION */
     .carousel-area {
-        position: relative; /* Nécessaire pour bouger les flèches */
+        position: relative; 
         margin-top: 10px;
     }
 
     .active-card {
-        padding: 20px 15px; /* Moins de marge intérieure */
-        min-height: auto; /* Hauteur automatique */
-        width: 100%; /* Prend toute la largeur disponible */
+        padding: 20px 15px; 
+        min-height: auto;
+        width: 100%; 
     }
 
-    /* 3. LES FLÈCHES DE NAVIGATION */
-    /* On les sort des côtés pour les mettre en dessous de la carte */
+    
     .nav-btn {
         position: absolute;
-        bottom: -70px; /* On les descend sous la carte */
+        bottom: -70px; 
         z-index: 10;
-        background: rgba(30, 39, 46, 0.8); /* Un peu transparent */
+        background: rgba(30, 39, 46, 0.8); 
     }
-    
-    /* On place le bouton gauche à gauche */
+   
     .nav-btn:first-child { 
         left: 20px; 
     }
     
-    /* On place le bouton droit à droite */
     .nav-btn:last-child { 
         right: 20px; 
     }
 
-    /* 4. LA ZONE DE JEU (Input + Shoot) */
-    /* On empile l'input et le bouton l'un sur l'autre */
+   
     .input-action {
-        flex-direction: column; /* Colonne au lieu de ligne */
+        flex-direction: column; 
         gap: 10px;
     }
 
     .game-input {
-        width: 100%; /* Prend toute la largeur */
-        font-size: 1.1rem; /* Texte plus gros pour les doigts */
+        width: 100%; 
+        font-size: 1.1rem; 
     }
 
     .shoot-btn {
-        width: 100%; /* Gros bouton facile à cliquer */
+        width: 100%; 
         padding: 15px;
     }
 
-    /* 5. TEXTES */
+    
     .card-header h1 {
-        font-size: 2rem; /* Titre plus petit */
+        font-size: 2rem; 
     }
 
     .question-text {
-        font-size: 1.3rem; /* Question lisible */
+        font-size: 1.3rem; 
     }
 }

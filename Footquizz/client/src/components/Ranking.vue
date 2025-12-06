@@ -44,7 +44,6 @@ const ranking = ref([]);
 
 onMounted(async () => {
     try {
-        // On appelle la route qu'on a créée tout à l'heure
         const res = await axios.get('http://localhost:3000/api/ranking');
         ranking.value = res.data;
     } catch (e) {
@@ -89,12 +88,10 @@ onMounted(async () => {
 
 .header-row { background: #f1f2f6; color: #7f8c8d; font-size: 0.9rem; text-transform: uppercase; }
 
-/* Colonnes */
 .rank { width: 40px; text-align: center; font-weight: bold; }
 .name { flex-grow: 1; padding-left: 20px; }
 .score { color: #2ecc71; font-family: 'Oswald'; font-size: 1.2rem; }
 
-/* Styles spéciaux pour le podium */
 .top-1 { background: linear-gradient(to right, #fff, #fff9db); font-size: 1.1rem; border-left: 5px solid #f1c40f; }
 .top-3 { color: #2c3e50; }
 

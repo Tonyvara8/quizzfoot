@@ -34,8 +34,9 @@
             <div class="game-zone">
                 <div class="input-action">
                     <input v-model="userAnswer" placeholder="Your answer..." class="game-input"
-                        :disabled="dejaRepondu" @keyup.enter="verifier">
-                    <button @click="verifier" class="shoot-btn" :disabled="dejaRepondu">SHOOT!</button>
+                        :disabled="estBloque" @keyup.enter="verifier">
+                    
+                    <button @click="verifier" class="shoot-btn" :disabled="estBloque">SHOOT!</button>
                 </div>
                 
                 <div v-if="message" class="feedback-msg" :class="messageClass">
@@ -44,7 +45,7 @@
             </div>
 
             <div class="answer-zone">
-                <button v-if="!montrerReponse" @click="montrerReponse=true" class="reveal-btn">Reveal Answer</button>
+                <button v-if="!montrerReponse" @click="clicSurReveal" class="reveal-btn">Reveal Answer</button>
                 <div v-else class="the-answer">{{ quizzes[idx].answer }}</div>
             </div>
             
@@ -70,8 +71,9 @@ const idx = ref(0);
 const userAnswer = ref('');
 const message = ref('');
 const messageClass = ref('');
-const dejaRepondu = ref(false);
 const montrerReponse = ref(false);
+
+const estBloque = ref(false); 
 
 const newQ = ref('');
 const newA = ref('');
@@ -91,8 +93,15 @@ async function chargerQuiz() {
     quizzes.value = res.data;
 }
 
+function clicSurReveal() {
+    montrerReponse.value = true; 
+    estBloque.value = true;     
+}
+
 async function verifier() {
-    if (dejaRepondu.value) return;
+    if (estBloque.value === true) {
+        return;
+    }
 
     const bonneReponse = quizzes.value[idx.value].answer;
     
@@ -109,7 +118,8 @@ async function verifier() {
         message.value = 'MISS! ❌';
         messageClass.value = 'feedback-wrong';
     }
-    dejaRepondu.value = true;
+    
+    estBloque.value = true;
 }
 
 function suivant() {
@@ -125,8 +135,8 @@ function prev() {
 function reset() {
     userAnswer.value = '';
     message.value = '';
-    dejaRepondu.value = false;
     montrerReponse.value = false;
+    estBloque.value = false;
 }
 
 function finir() {
@@ -176,6 +186,7 @@ async function supprimer(id) {
 .game-input { padding: 10px; border: 1px solid #ccc; border-radius: 5px; flex-grow: 1; }
 
 .shoot-btn { background: #1e272e; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-family: 'Oswald'; }
+.shoot-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .feedback-correct { color: green; font-weight: bold; margin-top: 5px; }
 
