@@ -105,7 +105,6 @@ body { margin: 0; background-color: #1e272e; color: white; font-family: 'Poppins
 .app-layout { display: flex; min-height: 100vh; min-width: 78vw; }
 
 .sidebar {
-    /* J'ai ajouté une largeur fixe ici sinon le menu est écrasé */
     width: 260px; flex-shrink: 0; 
     background: #0f1519; display: flex; flex-direction: column; padding: 20px;
     border-right: 2px solid #2ecc71; 
@@ -125,7 +124,6 @@ body { margin: 0; background-color: #1e272e; color: white; font-family: 'Poppins
     overflow-y: auto;
     background: radial-gradient(circle, #27ae60, #0f3e27);
     border-radius: 9px;
-    /* J'ai corrigé le 927% qui cassait le layout en flex: 1 */
     flex: 1; 
     display: flex;
     align-items: stretch;
@@ -135,16 +133,14 @@ body { margin: 0; background-color: #1e272e; color: white; font-family: 'Poppins
     align-content: stretch;
  }
 .center-content { display: flex; justify-content: center; align-items: center; height: 100%; flex-direction: column; }
-/* --- VERSION MOBILE (Téléphones) --- */
 @media (max-width: 768px) {
     .app-layout { 
         flex-direction: column; 
     }
 
-    /* BARRE DU HAUT */
     .sidebar { 
         width: 100%; 
-        height: 60px; /* Hauteur fixe */
+        height: 60px; 
         flex-direction: row; 
         align-items: center; 
         justify-content: space-between; 
@@ -156,21 +152,19 @@ body { margin: 0; background-color: #1e272e; color: white; font-family: 'Poppins
         z-index: 100;
     }
     
-    /* 1. GAUCHE : Profil (Petit) */
     .sidebar-header { 
         margin: 0; padding: 0; border: none;
         display: flex; align-items: center; gap: 10px; 
         flex-shrink: 0;
     }
     .avatar-container { width: 35px; height: 35px; font-size: 1rem; margin: 0; border: 2px solid white; }
-    .avatar-container i { font-size: 1rem; } /* Force la taille de l'icône user */
+    .avatar-container i { font-size: 1rem; }
     .user-name { font-size: 0.9rem; margin: 0; color: white; }
     .user-role { display: none; }
     
-    /* 2. CENTRE : Menu (Icônes forcées en BLANC) */
     .sidebar-menu { 
         flex-direction: row; 
-        gap: 15px; /* Espace entre les boutons */
+        gap: 15px; 
         justify-content: center;
         flex-grow: 1; 
         margin: 0 10px;
@@ -181,27 +175,23 @@ body { margin: 0; background-color: #1e272e; color: white; font-family: 'Poppins
         width: 40px; 
         height: 40px;
         justify-content: center; 
-        border-radius: 50%; /* Boutons bien ronds */
-        color: #ecf0f1 !important; /* FORCE LA COULEUR BLANCHE */
+        border-radius: 50%; 
+        color: #ecf0f1 !important; 
         display: flex;
         align-items: center;
     }
     
-    /* Le fond vert au survol ou actif */
     .sidebar-menu button.active, .sidebar-menu button:hover {
         background: #2ecc71;
-        color: #0f1519 !important; /* Devient noir sur fond vert */
-    }
+        color: #0f1519 !important; 
 
-    .sidebar-menu button span { display: none; } /* Cache le texte */
-    
+    .sidebar-menu button span { display: none; }
     .sidebar-menu button i {
-        display: block !important; /* FORCE L'AFFICHAGE DE L'ICONE */
+        display: block !important;
         font-size: 1.2rem;
         margin: 0;
     }
     
-    /* 3. DROITE : Logout */
     .user-info { margin: 0; padding: 0; border: none; flex-shrink: 0; }
     .logout-text { display: none; }
     
@@ -217,10 +207,9 @@ body { margin: 0; background-color: #1e272e; color: white; font-family: 'Poppins
     }
     .logout-icon { color: white !important; font-size: 1rem; margin: 0; }
 
-    /* Ajustement contenu */
     .main-content { padding: 10px; }
     .center-content h1 { font-size: 1.5rem; }
-}
+}}
 
 .user-name { margin: 10px 0 5px 0; font-family: 'Oswald'; text-transform: uppercase; letter-spacing: 1px; }
 .user-role { background: #34495e; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; text-transform: uppercase; color: #bdc3c7; }

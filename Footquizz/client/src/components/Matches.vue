@@ -27,7 +27,7 @@
             <i class="fas fa-chevron-left"></i>
         </button>
 
-        <div class="quiz-card active-card">
+        <div class="quiz-card active-card" v-if="quizzes[idx]">
             <div class="question-counter">Question {{ idx + 1 }} / {{ quizzes.length }}</div>
             <div class="question-text">{{ quizzes[idx].question }}</div>
             
